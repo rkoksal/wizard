@@ -1,0 +1,251 @@
+// ----------------------------
+// Global Styles
+// ----------------------------
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// ----------------------------
+// Warp Effect
+// ----------------------------
+.warp {
+  display: inline-block;
+}
+
+.warp-item {
+  -webkit-filter: blur(0);
+  transition: transform 0.1s linear;
+}
+
+// ----------------------------
+// Card
+// ----------------------------
+.card-wrapper {
+  margin: 60px;
+}
+
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    box-shadow: 0px 0px 15px rgba(black, 0.15);
+  }
+}
+
+.card-image {
+  height: 150px;
+  background: #ccc;
+}
+
+.card-content {
+  padding: 10px;
+  h3 {
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  p {
+    margin: 0;
+    font-size: 12px;
+  }
+}
+// ----------------------------
+// Tabs
+// ----------------------------
+.tab-labels, .tab-contents {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tab-labels {
+  margin-left: 16px;
+  margin-bottom: 16px;
+}
+
+.tab-label {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px;
+  color: #7f7f7f;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  &:hover {
+    color: black;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    opacity: 0;
+    background: black;
+    transition: all 0.2s ease-in-out;
+  }
+  &.tab--active {
+    color: black;
+    &:before {
+      opacity: 1;
+      width: 100%;
+      left: 0;
+    }
+  }
+}
+
+.tab-content {
+  display: none;
+  &.tab--active {
+    display: block;
+  }
+}
+
+// ----------------------------
+// Hotspots
+// ----------------------------
+$hotspot: #3d8411;
+$hotspotOffset: -30px;
+
+.hotspots {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  &:before {
+    display: block;
+    padding-top: 50%;
+    content: '';
+  }
+}
+
+.hotspot-photo {
+  background-color: #ccc;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: $hotspotOffset;
+  left: $hotspotOffset;
+  right: $hotspotOffset;
+  bottom: $hotspotOffset;
+  transform-origin: center center;
+}
+
+.hotspot {
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+  padding-top: 2px;
+  width: 25px;
+  height: 25px;
+  background-color: $hotspot;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 14px;
+  background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-1176 -2262)" fill="none" fill-rule="evenodd"> <g transform="translate(0 1781)" fill="#fff" fill-rule="nonzero"> <g transform="translate(0 60)"> <g transform="translate(1160 405)"> <g transform="translate(16 16)"> <path d="m5.5 0c-0.14425 0-0.2619 0.11765-0.2619 0.2619v4.9762h-4.9762c-0.14425 0-0.2619 0.11765-0.2619 0.2619s0.11765 0.2619 0.2619 0.2619h4.9762v4.9762c0 0.14425 0.11765 0.2619 0.2619 0.2619s0.2619-0.11765 0.2619-0.2619v-4.9762h4.9762c0.14425 0 0.2619-0.11765 0.2619-0.2619s-0.11765-0.2619-0.2619-0.2619h-4.9762v-4.9762c0-0.14425-0.11765-0.2619-0.2619-0.2619z"/> </g> </g> </g> </g> </g> </svg>');
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: 
+    box-shadow 0.2s ease-in-out,
+    background 0.2s ease-in-out;
+  box-shadow:
+    0 0 3px rgba(black, 0.8),
+    0 0 0 4px rgba($hotspot, 0.3),
+    0 0 0 8px rgba($hotspot, 0.2),
+    0 0 20px 10px rgba($hotspot, 0.2);
+  &:hover {
+    background-color: lighten($hotspot, 10);
+    box-shadow:
+      0 0 5px rgba(black, 0.8),
+      0 0 0 6px rgba($hotspot, 0.3),
+      0 0 0 10px rgba($hotspot, 0.2),
+      0 0 20px 10px rgba($hotspot, 0.2);
+  }
+}
+
+// ----------------------------
+// Drawer
+// ----------------------------
+.drawer-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  background: black;
+  color: white;
+  z-index: 2;
+  padding: 20px;
+  transform: translatex(100%);
+}
+
+.drawer-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.drawer-inner {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: auto;
+  padding: 30px;
+}
+
+.drawer-close {
+  position: absolute;
+  top: calc(50% - 20px);
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  cursor: pointer;
+  transform: rotate(-180deg) translateX(20px);
+  background-color: white;
+  background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 28 17" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-696 -2197)" fill="none" fill-rule="evenodd"> <g transform="translate(0 1781)" fill="black" fill-rule="nonzero" stroke="#fff" stroke-width=".25"> <g transform="translate(685 60)"> <g transform="translate(25 365) translate(-25 -25)"> <g transform="translate(12 17)"> <path d="m0.67998 8.3149h23.486l-5.9151 5.7865c-0.26562 0.25984-0.26562 0.6808 0 0.94062 0.13281 0.12992 0.30679 0.19488 0.48078 0.19488 0.17399 0 0.34794-0.06496 0.48078-0.19488l7.1078-6.9533c0.26562-0.25984 0.26562-0.6808 0-0.94062l-7.1078-6.9533c-0.26562-0.25984-0.69592-0.25984-0.96152 0-0.2656 0.25984-0.26562 0.6808 0 0.94062l5.979 5.8491h-23.55c-0.37586 0-0.67998 0.29752-0.67998 0.6652-3.3999e-5 0.36765 0.3041 0.66516 0.67994 0.66516z"/> </g> </g> </g> </g> </g> </svg>');
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center center;
+  border-radius: 50%;
+  z-index: 1;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: $hotspot;
+    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 28 17" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-696 -2197)" fill="none" fill-rule="evenodd"> <g transform="translate(0 1781)" fill="#fff" fill-rule="nonzero" stroke="#fff" stroke-width=".25"> <g transform="translate(685 60)"> <g transform="translate(25 365) translate(-25 -25)"> <g transform="translate(12 17)"> <path d="m0.67998 8.3149h23.486l-5.9151 5.7865c-0.26562 0.25984-0.26562 0.6808 0 0.94062 0.13281 0.12992 0.30679 0.19488 0.48078 0.19488 0.17399 0 0.34794-0.06496 0.48078-0.19488l7.1078-6.9533c0.26562-0.25984 0.26562-0.6808 0-0.94062l-7.1078-6.9533c-0.26562-0.25984-0.69592-0.25984-0.96152 0-0.2656 0.25984-0.26562 0.6808 0 0.94062l5.979 5.8491h-23.55c-0.37586 0-0.67998 0.29752-0.67998 0.6652-3.3999e-5 0.36765 0.3041 0.66516 0.67994 0.66516z"/> </g> </g> </g> </g> </g> </svg>
+');
+  }
+}
+
+.drawer-heading {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.drawer-text {
+  color: #8b8b8b;
+  font-size: 13px;
+  line-height: 20px;
+}
