@@ -3,10 +3,16 @@
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  margin-top: 20px;
-  font-family: sans-serif;
+   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff; }
+  
+  
 }
 
 .container {
@@ -66,6 +72,7 @@ body {
 .tab-labels {
   margin-left: 16px;
   margin-bottom: 16px;
+  font-size: 42px;
 }
 
 .tab-label {
@@ -162,7 +169,7 @@ body {
 
 .drawer-content {
   position: absolute;
-  top: 100;
+  top: 0;
   right: 0;
   bottom: 0;
   width: 50%;
