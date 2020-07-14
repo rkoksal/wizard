@@ -1,6 +1,3 @@
-// ----------------------------
-// Global Styles
-// ----------------------------
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -17,21 +14,18 @@ body {
   margin: 0 auto;
 }
 
-// ----------------------------
-// Warp Effect
-// ----------------------------
 .warp {
   display: inline-block;
 }
 
 .warp-item {
   -webkit-filter: blur(0);
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
   transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
 }
 
-// ----------------------------
-// Card
-// ----------------------------
 .card-wrapper {
   margin: 60px;
 }
@@ -39,10 +33,11 @@ body {
 .card {
   width: 300px;
   border: 1px solid #ccc;
+  -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  &:hover {
-    box-shadow: 0px 0px 15px rgba(black, 0.15);
-  }
+}
+.card:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
@@ -52,18 +47,16 @@ body {
 
 .card-content {
   padding: 10px;
-  h3 {
-    margin: 0;
-    margin-bottom: 5px;
-  }
-  p {
-    margin: 0;
-    font-size: 12px;
-  }
 }
-// ----------------------------
-// Tabs
-// ----------------------------
+.card-content h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.card-content p {
+  margin: 0;
+  font-size: 12px;
+}
+
 .tab-labels, .tab-contents {
   list-style-type: none;
   margin: 0;
@@ -80,55 +73,51 @@ body {
   display: inline-block;
   padding: 10px;
   color: #7f7f7f;
+  -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   position: relative;
-  &:hover {
-    color: black;
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    display: block;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    opacity: 0;
-    background: black;
-    transition: all 0.2s ease-in-out;
-  }
-  &.tab--active {
-    color: black;
-    &:before {
-      opacity: 1;
-      width: 100%;
-      left: 0;
-    }
-  }
+}
+.tab-label:hover {
+  color: black;
+}
+.tab-label:before {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  opacity: 0;
+  background: black;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.tab-label.tab--active {
+  color: black;
+}
+.tab-label.tab--active:before {
+  opacity: 1;
+  width: 100%;
+  left: 0;
 }
 
 .tab-content {
   display: none;
-  &.tab--active {
-    display: block;
-  }
 }
-
-// ----------------------------
-// Hotspots
-// ----------------------------
-$hotspot: #3d8411;
-$hotspotOffset: -30px;
+.tab-content.tab--active {
+  display: block;
+}
 
 .hotspots {
   position: relative;
   overflow: hidden;
   display: block;
-  &:before {
-    display: block;
-    padding-top: 50%;
-    content: '';
-  }
+}
+.hotspots:before {
+  display: block;
+  padding-top: 50%;
+  content: '';
 }
 
 .hotspot-photo {
@@ -137,11 +126,12 @@ $hotspotOffset: -30px;
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  top: $hotspotOffset;
-  left: $hotspotOffset;
-  right: $hotspotOffset;
-  bottom: $hotspotOffset;
-  transform-origin: center center;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
 }
 
 .hotspot {
@@ -153,37 +143,26 @@ $hotspotOffset: -30px;
   padding-top: 2px;
   width: 25px;
   height: 25px;
-  background-color: $hotspot;
+  background-color: #3d8411;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 14px;
   background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-1176 -2262)" fill="none" fill-rule="evenodd"> <g transform="translate(0 1781)" fill="#fff" fill-rule="nonzero"> <g transform="translate(0 60)"> <g transform="translate(1160 405)"> <g transform="translate(16 16)"> <path d="m5.5 0c-0.14425 0-0.2619 0.11765-0.2619 0.2619v4.9762h-4.9762c-0.14425 0-0.2619 0.11765-0.2619 0.2619s0.11765 0.2619 0.2619 0.2619h4.9762v4.9762c0 0.14425 0.11765 0.2619 0.2619 0.2619s0.2619-0.11765 0.2619-0.2619v-4.9762h4.9762c0.14425 0 0.2619-0.11765 0.2619-0.2619s-0.11765-0.2619-0.2619-0.2619h-4.9762v-4.9762c0-0.14425-0.11765-0.2619-0.2619-0.2619z"/> </g> </g> </g> </g> </g> </svg>');
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: 
-    box-shadow 0.2s ease-in-out,
-    background 0.2s ease-in-out;
-  box-shadow:
-    0 0 3px rgba(black, 0.8),
-    0 0 0 4px rgba($hotspot, 0.3),
-    0 0 0 8px rgba($hotspot, 0.2),
-    0 0 20px 10px rgba($hotspot, 0.2);
-  &:hover {
-    background-color: lighten($hotspot, 10);
-    box-shadow:
-      0 0 5px rgba(black, 0.8),
-      0 0 0 6px rgba($hotspot, 0.3),
-      0 0 0 10px rgba($hotspot, 0.2),
-      0 0 20px 10px rgba($hotspot, 0.2);
-  }
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: box-shadow 0.2s ease-in-out, background 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, background 0.2s ease-in-out;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8), 0 0 0 4px rgba(61, 132, 17, 0.3), 0 0 0 8px rgba(61, 132, 17, 0.2), 0 0 20px 10px rgba(61, 132, 17, 0.2);
+}
+.hotspot:hover {
+  background-color: #52b117;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 0 6px rgba(61, 132, 17, 0.3), 0 0 0 10px rgba(61, 132, 17, 0.2), 0 0 20px 10px rgba(61, 132, 17, 0.2);
 }
 
-// ----------------------------
-// Drawer
-// ----------------------------
 .drawer-content {
   position: absolute;
-  top: 0;
+  top: 100;
   right: 0;
   bottom: 0;
   width: 50%;
@@ -191,7 +170,8 @@ $hotspotOffset: -30px;
   color: white;
   z-index: 2;
   padding: 20px;
-  transform: translatex(100%);
+  -webkit-transform: translatex(100%);
+          transform: translatex(100%);
 }
 
 .drawer-image {
@@ -223,7 +203,8 @@ $hotspotOffset: -30px;
   height: 40px;
   opacity: 0;
   cursor: pointer;
-  transform: rotate(-180deg) translateX(20px);
+  -webkit-transform: rotate(-180deg) translateX(20px);
+          transform: rotate(-180deg) translateX(20px);
   background-color: white;
   background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 28 17" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-696 -2197)" fill="none" fill-rule="evenodd"> <g transform="translate(0 1781)" fill="black" fill-rule="nonzero" stroke="#fff" stroke-width=".25"> <g transform="translate(685 60)"> <g transform="translate(25 365) translate(-25 -25)"> <g transform="translate(12 17)"> <path d="m0.67998 8.3149h23.486l-5.9151 5.7865c-0.26562 0.25984-0.26562 0.6808 0 0.94062 0.13281 0.12992 0.30679 0.19488 0.48078 0.19488 0.17399 0 0.34794-0.06496 0.48078-0.19488l7.1078-6.9533c0.26562-0.25984 0.26562-0.6808 0-0.94062l-7.1078-6.9533c-0.26562-0.25984-0.69592-0.25984-0.96152 0-0.2656 0.25984-0.26562 0.6808 0 0.94062l5.979 5.8491h-23.55c-0.37586 0-0.67998 0.29752-0.67998 0.6652-3.3999e-5 0.36765 0.3041 0.66516 0.67994 0.66516z"/> </g> </g> </g> </g> </g> </svg>');
   background-repeat: no-repeat;
@@ -231,12 +212,12 @@ $hotspotOffset: -30px;
   background-position: center center;
   border-radius: 50%;
   z-index: 1;
+  -webkit-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
-  &:hover {
-    background-color: $hotspot;
-    background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 28 17" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-696 -2197)" fill="none" fill-rule="evenodd"> <g transform="translate(0 1781)" fill="#fff" fill-rule="nonzero" stroke="#fff" stroke-width=".25"> <g transform="translate(685 60)"> <g transform="translate(25 365) translate(-25 -25)"> <g transform="translate(12 17)"> <path d="m0.67998 8.3149h23.486l-5.9151 5.7865c-0.26562 0.25984-0.26562 0.6808 0 0.94062 0.13281 0.12992 0.30679 0.19488 0.48078 0.19488 0.17399 0 0.34794-0.06496 0.48078-0.19488l7.1078-6.9533c0.26562-0.25984 0.26562-0.6808 0-0.94062l-7.1078-6.9533c-0.26562-0.25984-0.69592-0.25984-0.96152 0-0.2656 0.25984-0.26562 0.6808 0 0.94062l5.979 5.8491h-23.55c-0.37586 0-0.67998 0.29752-0.67998 0.6652-3.3999e-5 0.36765 0.3041 0.66516 0.67994 0.66516z"/> </g> </g> </g> </g> </g> </svg>
-');
-  }
+}
+.drawer-close:hover {
+  background-color: #3d8411;
+  background-image: url('data:image/svg+xml;utf8,<svg version="1.1" viewBox="0 0 28 17" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-696 -2197)" fill="none" fill-rule="evenodd"> <g transform="translate(0 1781)" fill="#fff" fill-rule="nonzero" stroke="#fff" stroke-width=".25"> <g transform="translate(685 60)"> <g transform="translate(25 365) translate(-25 -25)"> <g transform="translate(12 17)"> <path d="m0.67998 8.3149h23.486l-5.9151 5.7865c-0.26562 0.25984-0.26562 0.6808 0 0.94062 0.13281 0.12992 0.30679 0.19488 0.48078 0.19488 0.17399 0 0.34794-0.06496 0.48078-0.19488l7.1078-6.9533c0.26562-0.25984 0.26562-0.6808 0-0.94062l-7.1078-6.9533c-0.26562-0.25984-0.69592-0.25984-0.96152 0-0.2656 0.25984-0.26562 0.6808 0 0.94062l5.979 5.8491h-23.55c-0.37586 0-0.67998 0.29752-0.67998 0.6652-3.3999e-5 0.36765 0.3041 0.66516 0.67994 0.66516z"/> </g> </g> </g> </g> </g> </svg>\a');
 }
 
 .drawer-heading {
